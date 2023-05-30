@@ -1,4 +1,4 @@
-const contactsTools = require('./db/contacts');
+const contactsTools = require('./contacts');
 const yargs = require('yargs');
 
 const { argv } = yargs(process.argv.slice(2));
@@ -8,25 +8,25 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 		case 'list':
 			const allContacts = await contactsTools.getListOfContacts();
 			console.log('Here all contacts');
-			console.log(allContacts);
+			console.table(allContacts);
 			break;
 
 		case 'get':
 			const getContactById = await contactsTools.getContactById(id);
 			console.log('Here contact you looking for: ');
-			console.log(getContactById);
+			console.table(getContactById);
 			break;
 
 		case 'add':
 			const addNewContact = await contactsTools.addContact(name, email, phone);
 			console.log('Contact was added to data base');
-			console.log(addNewContact);
+			console.table(addNewContact);
 			break;
 
 		case 'remove':
 			const removeContactById = await contactsTools.removeContactById(id);
 			console.log('Contact removed: ');
-			console.log(removeContactById);
+			console.table(removeContactById);
 			break;
 
 		default:
