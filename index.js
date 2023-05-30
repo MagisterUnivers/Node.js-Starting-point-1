@@ -20,13 +20,13 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 		case 'add':
 			const addNewContact = await contactsTools.addContact(name, email, phone);
 			console.log('Contact was added to data base');
-			console.table(addNewContact, ['id', 'name', 'email', 'phone']);
+			console.table([addNewContact], ['id', 'name', 'email', 'phone']);
 			break;
 
 		case 'remove':
 			const removeContactById = await contactsTools.removeContactById(id);
 			console.log('Contact removed: ');
-			console.table(removeContactById, ['id', 'name', 'email', 'phone']);
+			console.table([removeContactById], ['id', 'name', 'email', 'phone']);
 			break;
 
 		default:
